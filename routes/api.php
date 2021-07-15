@@ -18,17 +18,13 @@ use App\Http\Controllers\AuthController;
 
 Route::post('register', [AuthController::class, 'register']);
 
-Route::post("login", [AuthController::class, 'login']);
+Route::get("login", [AuthController::class, 'login']);
 
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('user/{email?}', [AuthController::class, 'user']);
     Route::put('update', [AuthController::class, 'update']);
     Route::get('search/{name}', [AuthController::class, 'search']);
+    Route::get('students', [AuthController::class, 'students']);
+    Route::get('devices/{id?}', [AuthController::class, 'devices']);
 });
-
-
-
-Route::get('students', [AuthController::class, 'students']);
-
-Route::get('devices/{id?}', [AuthController::class, 'devices']);

@@ -14,7 +14,8 @@ class AuthController extends Controller
     public function register(Request $req)
     {
         $user = new User;
-        $user->name = $req->name;
+        $user->first_name = $req->first_name;
+        $user->last_name = $req->last_name;
         $user->email = $req->email;
         $user->password = $req->password;
         $result = $user->save();
